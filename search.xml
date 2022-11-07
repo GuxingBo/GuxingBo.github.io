@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>关于JAVA的一些题目</title>
+      <link href="/2022/11/02/Java/"/>
+      <url>/2022/11/02/Java/</url>
+      
+        <content type="html"><![CDATA[<!-- title【必需】文章标题date【必需】文章创建日期updated【可选】文章更新日期tags【可选】文章标签categories【可选】文章分类keywords【可选】文章关键字description【可选】文章描述top_img【可选】文章顶部图片cover【可选】文章缩略图(如果没有设置top_img,文章页顶部将显示缩略图，可设为false/图片地址/留空)comments【可选】显示文章评论模块(默认 true)toc【可选】显示文章TOC(默认为设置中toc的enable配置)toc_number【可选】显示toc_number(默认为设置中toc的number配置)toc_style_simple【可选】显示 toc 简洁模式copyright【可选】显示文章版权模块(默认为设置中post_copyright的enable配置)copyright_author【可选】文章版权模块的文章作者copyright_author_href【可选】文章版权模块的文章作者链接copyright_url【可选】文章版权模块的文章连结链接copyright_info【可选】文章版权模块的版权声明文字mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置)aside【可选】显示侧边栏 (默认 true) --><h1 id="Java-基础"><a href="#Java-基础" class="headerlink" title="Java 基础"></a>Java 基础</h1><h2 id="1-JDK-和-JRE-有什么区别？"><a href="#1-JDK-和-JRE-有什么区别？" class="headerlink" title="1.JDK 和 JRE 有什么区别？"></a>1.JDK 和 JRE 有什么区别？</h2><ul><li>JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。</li><li>JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。<br>具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。简单来说：如果你需要运行 java 程序，只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。</li></ul><h2 id="2-x3D-x3D-和-equals-的区别是什么？"><a href="#2-x3D-x3D-和-equals-的区别是什么？" class="headerlink" title="2.&#x3D;&#x3D; 和 equals 的区别是什么？"></a>2.&#x3D;&#x3D; 和 equals 的区别是什么？</h2><p>&#x3D;&#x3D; 解读<br>对于基本类型和引用类型 &#x3D;&#x3D; 的作用效果是不同的，如下所示：<br>基本类型：比较的是值是否相同；<br>引用类型：比较的是引用是否相同；<br>代码示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String x = <span class="string">&quot;string&quot;</span>;</span><br><span class="line">String y = <span class="string">&quot;string&quot;</span>;</span><br><span class="line">String z = new String(<span class="string">&quot;string&quot;</span>);</span><br><span class="line">System.out.println(x==y); // <span class="literal">true</span></span><br><span class="line">System.out.println(x==z); // <span class="literal">false</span></span><br><span class="line">System.out.println(x.equals(y)); // <span class="literal">true</span></span><br><span class="line">System.out.println(x.equals(z)); // <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>代码解读：因为 x 和 y 指向的是同一个引用，所以 &#x3D;&#x3D; 也是 true，而 new String()方法则重写开辟了内存空间，所以 &#x3D;&#x3D; 结果为 false，而 equals 比较的一直是值，所以结果都为 true。<br>equals 解读<br>equals 本质上就是 &#x3D;&#x3D;，只不过 String 和 Integer 等重写了 equals 方法，把它变成了值比较。看下面的代码就明白了。<br>首先来看默认情况下 equals 比较一个有相同值的对象，代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Cat &#123;</span><br><span class="line">    public Cat(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public String <span class="function"><span class="title">getName</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cat c1 = new Cat(<span class="string">&quot;王磊&quot;</span>);</span><br><span class="line">Cat c2 = new Cat(<span class="string">&quot;王磊&quot;</span>);</span><br><span class="line">System.out.println(c1.equals(c2)); // <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>输出结果出乎我们的意料，竟然是 false？这是怎么回事，看了 equals 源码就知道了，源码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">    <span class="built_in">return</span> (this == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>原来 equals 本质上就是 &#x3D;&#x3D;。<br>那问题来了，两个相同值的 String 对象，为什么返回的是 true？代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1 = new String(<span class="string">&quot;老王&quot;</span>);</span><br><span class="line">String s2 = new String(<span class="string">&quot;老王&quot;</span>);</span><br><span class="line">System.out.println(s1.equals(s2)); // <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>同样的，当我们进入 String 的 equals 方法，找到了答案，代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject) &#123;</span><br><span class="line">    <span class="keyword">if</span> (this == anObject) &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (anObject instanceof String) &#123;</span><br><span class="line">        String anotherString = (String)anObject;</span><br><span class="line">        int n = value.length;</span><br><span class="line">        <span class="keyword">if</span> (n == anotherString.value.length) &#123;</span><br><span class="line">            char v1[] = value;</span><br><span class="line">            char v2[] = anotherString.value;</span><br><span class="line">            int i = 0;</span><br><span class="line">            <span class="keyword">while</span> (n-- != 0) &#123;</span><br><span class="line">                <span class="keyword">if</span> (v1[i] != v2[i])</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>原来是 String 重写了 Object 的 equals 方法，把引用比较改成了值比较。<br>总结 ：&#x3D;&#x3D; 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Butterfly美化日记</title>
+      <link href="/2022/11/01/Butterfly/"/>
+      <url>/2022/11/01/Butterfly/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[   /* 夜间模式遮罩透明 */  [data-theme="dark"] #footer::before {    background: transparent !important;  }  [data-theme="dark"] #page-header::before {    background: transparent !important;  }    /* 页脚透明 */  #footer {    background: transparent !important;  }  /* 顶部加载渐变条 */  .pace {    -webkit-pointer-events: none;    pointer-events: none;    -webkit-user-select: none;    -moz-user-select: none;    user-select: none;    z-index: 2000;    position: fixed;    margin: auto;    top: 4px;    left: 0;    right: 0;    height: 8px;    border-radius: 8px;    width: 7rem;    background: #eaecf2;    border: 1px #e3e8f7;    overflow: hidden}.pace-inactive .pace-progress {    opacity: 0;    transition: .3s ease-in}.pace .pace-progress {    -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    -ms-box-sizing: border-box;    -o-box-sizing: border-box;    box-sizing: border-box;    -webkit-transform: translate3d(0, 0, 0);    -moz-transform: translate3d(0, 0, 0);    -ms-transform: translate3d(0, 0, 0);    -o-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0);    max-width: 200px;    position: absolute;    z-index: 2000;    display: block;    top: 0;    right: 100%;    height: 100%;    width: 100%;    /* linear-gradient(to right, #3494e6, #ec6ead) */    background: linear-gradient(to right, #43cea2, #3866ca);    animation: gradient 2s ease infinite;    background-size: 200%}.pace.pace-inactive {    opacity: 0;    transition: .3s;    top: -8px}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/grayscale.js"/>
+      <url>/js/grayscale.js</url>
+      
+        <content type="html"><![CDATA[if(PublicSacrificeDay()){    document.getElementsByTagName("html")[0].setAttribute("style","filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");  }    function PublicSacrificeDay(){      var PSFarr=new Array("0403","0404","0405","0406","0414","0512","0707","0807","0814","0909","0918","0930","1025","1213");      //2020年4月4日 新冠肺炎哀悼日，清明节      //2010年4月14日，青海玉树地震      //2008年5月12日，四川汶川地震      //1937年7月7日,七七事变 又称卢沟桥事变      //2010年8月7日，甘肃舟曲特大泥石流        //8月14日，世界慰安妇纪念日      //1976年9月9日，毛主席逝世        //1931年9月18日，九一八事变        //烈士纪念日为每年9月30日      //1950年10月25日，抗美援朝纪念日      //1937年12月13日，南京大屠杀      var currentdate = new Date();      var str = "";      var mm = currentdate.getMonth()+1;      if(currentdate.getMonth()>9){        str += mm;      }else{        str += "0" + mm;      }      if(currentdate.getDate()>9){        str += currentdate.getDate();      }else{        str += "0" + currentdate.getDate();      }      if(PSFarr.indexOf(str)>-1){          return 1;      }else{          return 0;      }  }]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
+      
+        <content type="html"><![CDATA[var now = new Date();function createtime() {  var grt = new Date("11/01/2022 00:00:00");  now.setTime(now.getTime() + 250);  var days = (now - grt) / 1e3 / 60 / 60 / 24,    dnum = Math.floor(days),    hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,    hnum = Math.floor(hours);  1 == String(hnum).length && (hnum = "0" + hnum);  var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,    mnum = Math.floor(minutes);  1 == String(mnum).length && (mnum = "0" + mnum);  var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,    snum = Math.round(seconds);  1 == String(snum).length && (snum = "0" + snum);  let currentTimeHtml = "";  (currentTimeHtml =    hnum < 18 && hnum >= 9      ? `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`      : `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`),    document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = currentTimeHtml);}setInterval(() => {  createtime();}, 250);]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/title.js"/>
+      <url>/js/title.js</url>
+      
+        <content type="html"><![CDATA[//动态标题var OriginTitile = document.title;var titleTime;document.addEventListener("visibilitychange", function () {  if (document.hidden) {    //离开当前页面时标签显示内容    document.title = "w(ﾟДﾟ)w 不要走！再看看嘛！";    clearTimeout(titleTime);  } else {    //返回当前页面时标签显示内容    document.title = "♪(^∇^*)欢迎肥来！" + OriginTitile;    //两秒后变回正常标题    titleTime = setTimeout(function () {      document.title = OriginTitile;    }, 2000);  }});]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<!-- title【必需】页面标题date【必需】页面创建日期type【必需】标签、分类和友情链接三个页面需要配置updated【可选】页面更新日期description【可选】页面描述keywords【可选】页面关键字comments【可选】显示页面评论模块(默认 true)top_img【可选】页面顶部图片mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aside【可选】显示侧边栏 (默认 true)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置) -->]]></content>
+      
+    </entry>
+    
+    
+  
+</search>
