@@ -55,11 +55,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/runtime.js"/>
-      <url>/js/runtime.js</url>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
-        <content type="html"><![CDATA[var now = new Date();function createtime() {  var grt = new Date("11/01/2022 00:00:00");  now.setTime(now.getTime() + 250);  var days = (now - grt) / 1e3 / 60 / 60 / 24,    dnum = Math.floor(days),    hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,    hnum = Math.floor(hours);  1 == String(hnum).length && (hnum = "0" + hnum);  var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,    mnum = Math.floor(minutes);  1 == String(mnum).length && (mnum = "0" + mnum);  var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,    snum = Math.round(seconds);  1 == String(snum).length && (snum = "0" + snum);  let currentTimeHtml = "";  (currentTimeHtml =    hnum < 18 && hnum >= 9      ? `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`      : `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`),    document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = currentTimeHtml);}setInterval(() => {  createtime();}, 250);]]></content>
+        <content type="html"><![CDATA[<!-- title【必需】页面标题date【必需】页面创建日期type【必需】标签、分类和友情链接三个页面需要配置updated【可选】页面更新日期description【可选】页面描述keywords【可选】页面关键字comments【可选】显示页面评论模块(默认 true)top_img【可选】页面顶部图片mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aside【可选】显示侧边栏 (默认 true)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置) -->]]></content>
       
     </entry>
     
@@ -77,11 +77,11 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title></title>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
       
-        <content type="html"><![CDATA[<!-- title【必需】页面标题date【必需】页面创建日期type【必需】标签、分类和友情链接三个页面需要配置updated【可选】页面更新日期description【可选】页面描述keywords【可选】页面关键字comments【可选】显示页面评论模块(默认 true)top_img【可选】页面顶部图片mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aside【可选】显示侧边栏 (默认 true)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置) -->]]></content>
+        <content type="html"><![CDATA[var now = new Date();function createtime() {  var grt = new Date("11/01/2022 00:00:00");  now.setTime(now.getTime() + 250);  var days = (now - grt) / 1e3 / 60 / 60 / 24,    dnum = Math.floor(days),    hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,    hnum = Math.floor(hours);  1 == String(hnum).length && (hnum = "0" + hnum);  var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,    mnum = Math.floor(minutes);  1 == String(mnum).length && (mnum = "0" + mnum);  var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,    snum = Math.round(seconds);  1 == String(snum).length && (snum = "0" + snum);  let currentTimeHtml = "";  (currentTimeHtml =    hnum < 18 && hnum >= 9      ? `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`      : `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`),    document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = currentTimeHtml);}setInterval(() => {  createtime();}, 250);]]></content>
       
     </entry>
     
