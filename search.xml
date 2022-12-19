@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux C语言</title>
+      <link href="/Linux/282354f86c96/"/>
+      <url>/Linux/282354f86c96/</url>
+      
+        <content type="html"><![CDATA[<!-- title【必需】文章标题date【必需】文章创建日期updated【可选】文章更新日期tags【可选】文章标签categories【可选】文章分类keywords【可选】文章关键字description【可选】文章描述top_img【可选】文章顶部图片cover【可选】文章缩略图(如果没有设置top_img,文章页顶部将显示缩略图，可设为false/图片地址/留空)comments【可选】显示文章评论模块(默认 true)toc【可选】显示文章TOC(默认为设置中toc的enable配置)toc_number【可选】显示toc_number(默认为设置中toc的number配置)toc_style_simple【可选】显示 toc 简洁模式copyright【可选】显示文章版权模块(默认为设置中post_copyright的enable配置)copyright_author【可选】文章版权模块的文章作者copyright_author_href【可选】文章版权模块的文章作者链接copyright_url【可选】文章版权模块的文章连结链接copyright_info【可选】文章版权模块的版权声明文字mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置)aside【可选】显示侧边栏 (默认 true) --><p>通过C语言实现数组的输入、输出，求和、平均值、最大值、最小值以及数据输出的冒泡排序。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SIZE 5</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="type">float</span> src[SIZE]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> t=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> arv=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> max=<span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> min=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;请输入%d个数\n&quot;</span>,SIZE); <span class="comment">//输入数组</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;SIZE;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>,&amp;src[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;SIZE;i++) <span class="comment">//求和</span></span><br><span class="line">&#123;</span><br><span class="line">sum+=src[i];</span><br><span class="line">&#125;</span><br><span class="line">arv=sum/SIZE; <span class="comment">//求平均值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(max=src[<span class="number">0</span>],min=src[<span class="number">0</span>],i=<span class="number">1</span>;i&lt;SIZE;i++) <span class="comment">//求最大值最小值</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(max&lt;src[i])</span><br><span class="line">&#123;</span><br><span class="line">max=src[i];</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">min=src[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;SIZE<span class="number">-1</span>;i++) <span class="comment">//冒泡排序</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;SIZE<span class="number">-1</span>-i;j++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(src[j]&gt;src[j+<span class="number">1</span>])</span><br><span class="line">&#123;</span><br><span class="line">t=src[j];</span><br><span class="line">src[j]=src[j+<span class="number">1</span>];</span><br><span class="line">src[j+<span class="number">1</span>]=t;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;SIZE;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.2f  &quot;</span>,src[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;sum=%.2f arv=%.2f max=%.2f min=%.2f\n&quot;</span>,sum,arv,max,min);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux常用命令</title>
       <link href="/Linux/44256bc0c18b/"/>
       <url>/Linux/44256bc0c18b/</url>
@@ -83,10 +108,21 @@
     
     <entry>
       <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
+      <link href="/js/grayscale.js"/>
+      <url>/js/grayscale.js</url>
       
-        <content type="html"><![CDATA[   /* 夜间模式遮罩透明 */  [data-theme="dark"] #footer::before {    background: transparent !important;  }  [data-theme="dark"] #page-header::before {    background: transparent !important;  }    /* 页脚透明 */  #footer {    background: transparent !important;  }  /* 顶部加载渐变条 */  .pace {    -webkit-pointer-events: none;    pointer-events: none;    -webkit-user-select: none;    -moz-user-select: none;    user-select: none;    z-index: 2000;    position: fixed;    margin: auto;    top: 4px;    left: 0;    right: 0;    height: 8px;    border-radius: 8px;    width: 7rem;    background: #eaecf2;    border: 1px #e3e8f7;    overflow: hidden}.pace-inactive .pace-progress {    opacity: 0;    transition: .3s ease-in}.pace .pace-progress {    -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    -ms-box-sizing: border-box;    -o-box-sizing: border-box;    box-sizing: border-box;    -webkit-transform: translate3d(0, 0, 0);    -moz-transform: translate3d(0, 0, 0);    -ms-transform: translate3d(0, 0, 0);    -o-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0);    max-width: 200px;    position: absolute;    z-index: 2000;    display: block;    top: 0;    right: 100%;    height: 100%;    width: 100%;    /* linear-gradient(to right, #3494e6, #ec6ead) */    background: linear-gradient(to right, #43cea2, #3866ca);    animation: gradient 2s ease infinite;    background-size: 200%}.pace.pace-inactive {    opacity: 0;    transition: .3s;    top: -8px}]]></content>
+        <content type="html"><![CDATA[if(PublicSacrificeDay()){    document.getElementsByTagName("html")[0].setAttribute("style","filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");  }    function PublicSacrificeDay(){      var PSFarr=new Array("0403","0404","0405","0406","0414","0512","0707","0807","0814","0909","0918","0930","1025","1213");      //2020年4月4日 新冠肺炎哀悼日，清明节      //2010年4月14日，青海玉树地震      //2008年5月12日，四川汶川地震      //1937年7月7日,七七事变 又称卢沟桥事变      //2010年8月7日，甘肃舟曲特大泥石流        //8月14日，世界慰安妇纪念日      //1976年9月9日，毛主席逝世        //1931年9月18日，九一八事变        //烈士纪念日为每年9月30日      //1950年10月25日，抗美援朝纪念日      //1937年12月13日，南京大屠杀      var currentdate = new Date();      var str = "";      var mm = currentdate.getMonth()+1;      if(currentdate.getMonth()>9){        str += mm;      }else{        str += "0" + mm;      }      if(currentdate.getDate()>9){        str += currentdate.getDate();      }else{        str += "0" + currentdate.getDate();      }      if(PSFarr.indexOf(str)>-1){          return 1;      }else{          return 0;      }  }]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<!-- title【必需】页面标题date【必需】页面创建日期type【必需】标签、分类和友情链接三个页面需要配置updated【可选】页面更新日期description【可选】页面描述keywords【可选】页面关键字comments【可选】显示页面评论模块(默认 true)top_img【可选】页面顶部图片mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aside【可选】显示侧边栏 (默认 true)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置) -->]]></content>
       
     </entry>
     
@@ -105,10 +141,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/runtime.js"/>
-      <url>/js/runtime.js</url>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[var now = new Date();function createtime() {  var grt = new Date("11/01/2022 00:00:00");  now.setTime(now.getTime() + 250);  var days = (now - grt) / 1e3 / 60 / 60 / 24,    dnum = Math.floor(days),    hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,    hnum = Math.floor(hours);  1 == String(hnum).length && (hnum = "0" + hnum);  var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,    mnum = Math.floor(minutes);  1 == String(mnum).length && (mnum = "0" + mnum);  var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,    snum = Math.round(seconds);  1 == String(snum).length && (snum = "0" + snum);  let currentTimeHtml = "";  (currentTimeHtml =    hnum < 18 && hnum >= 9      ? `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`      : `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`),    document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = currentTimeHtml);}setInterval(() => {  createtime();}, 250);]]></content>
+        <content type="html"><![CDATA[   /* 夜间模式遮罩透明 */  [data-theme="dark"] #footer::before {    background: transparent !important;  }  [data-theme="dark"] #page-header::before {    background: transparent !important;  }    /* 页脚透明 */  #footer {    background: transparent !important;  }  /* 顶部加载渐变条 */  .pace {    -webkit-pointer-events: none;    pointer-events: none;    -webkit-user-select: none;    -moz-user-select: none;    user-select: none;    z-index: 2000;    position: fixed;    margin: auto;    top: 4px;    left: 0;    right: 0;    height: 8px;    border-radius: 8px;    width: 7rem;    background: #eaecf2;    border: 1px #e3e8f7;    overflow: hidden}.pace-inactive .pace-progress {    opacity: 0;    transition: .3s ease-in}.pace .pace-progress {    -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    -ms-box-sizing: border-box;    -o-box-sizing: border-box;    box-sizing: border-box;    -webkit-transform: translate3d(0, 0, 0);    -moz-transform: translate3d(0, 0, 0);    -ms-transform: translate3d(0, 0, 0);    -o-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0);    max-width: 200px;    position: absolute;    z-index: 2000;    display: block;    top: 0;    right: 100%;    height: 100%;    width: 100%;    /* linear-gradient(to right, #3494e6, #ec6ead) */    background: linear-gradient(to right, #43cea2, #3866ca);    animation: gradient 2s ease infinite;    background-size: 200%}.pace.pace-inactive {    opacity: 0;    transition: .3s;    top: -8px}]]></content>
       
     </entry>
     
@@ -116,21 +152,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/grayscale.js"/>
-      <url>/js/grayscale.js</url>
+      <link href="/js/runtime.js"/>
+      <url>/js/runtime.js</url>
       
-        <content type="html"><![CDATA[if(PublicSacrificeDay()){    document.getElementsByTagName("html")[0].setAttribute("style","filter:gray !important;filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);");  }    function PublicSacrificeDay(){      var PSFarr=new Array("0403","0404","0405","0406","0414","0512","0707","0807","0814","0909","0918","0930","1025","1213");      //2020年4月4日 新冠肺炎哀悼日，清明节      //2010年4月14日，青海玉树地震      //2008年5月12日，四川汶川地震      //1937年7月7日,七七事变 又称卢沟桥事变      //2010年8月7日，甘肃舟曲特大泥石流        //8月14日，世界慰安妇纪念日      //1976年9月9日，毛主席逝世        //1931年9月18日，九一八事变        //烈士纪念日为每年9月30日      //1950年10月25日，抗美援朝纪念日      //1937年12月13日，南京大屠杀      var currentdate = new Date();      var str = "";      var mm = currentdate.getMonth()+1;      if(currentdate.getMonth()>9){        str += mm;      }else{        str += "0" + mm;      }      if(currentdate.getDate()>9){        str += currentdate.getDate();      }else{        str += "0" + currentdate.getDate();      }      if(PSFarr.indexOf(str)>-1){          return 1;      }else{          return 0;      }  }]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>link</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[<!-- title【必需】页面标题date【必需】页面创建日期type【必需】标签、分类和友情链接三个页面需要配置updated【可选】页面更新日期description【可选】页面描述keywords【可选】页面关键字comments【可选】显示页面评论模块(默认 true)top_img【可选】页面顶部图片mathjax【可选】显示mathjax(当设置mathjax的per_page: false时，才需要配置，默认 false)katex【可选】显示katex(当设置katex的per_page: false时，才需要配置，默认 false)aside【可选】显示侧边栏 (默认 true)aplayer【可选】在需要的页面加载aplayer的js和css,请参考文章下面的音乐 配置highlight_shrink【可选】配置代码框是否展开(true/false)(默认为设置中highlight_shrink的配置) -->]]></content>
+        <content type="html"><![CDATA[var now = new Date();function createtime() {  var grt = new Date("11/01/2022 00:00:00");  now.setTime(now.getTime() + 250);  var days = (now - grt) / 1e3 / 60 / 60 / 24,    dnum = Math.floor(days),    hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,    hnum = Math.floor(hours);  1 == String(hnum).length && (hnum = "0" + hnum);  var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,    mnum = Math.floor(minutes);  1 == String(mnum).length && (mnum = "0" + mnum);  var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,    snum = Math.round(seconds);  1 == String(snum).length && (snum = "0" + snum);  let currentTimeHtml = "";  (currentTimeHtml =    hnum < 18 && hnum >= 9      ? `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`      : `<span class='textTip'> <br> 本站居然运行了 ${dnum} 天</span><span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`),    document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = currentTimeHtml);}setInterval(() => {  createtime();}, 250);]]></content>
       
     </entry>
     
